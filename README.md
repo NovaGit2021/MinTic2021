@@ -1,4 +1,4 @@
-![Logo NovaGit_big](https://user-images.githubusercontent.com/88735952/134740376-f176fd37-9cf4-4624-879d-18b28b021208.jpg)
+![Logo NovaGit_big](https://github.com/NovaGit2021/MinTic2021/blob/267ee59f7ba3fc83b5af2075d08b1a0f5e73960d/Logo%20NovaGit.jpg)
 
 
 ## Organización: NovaGit2021 MinTic
