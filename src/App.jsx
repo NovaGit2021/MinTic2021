@@ -8,7 +8,7 @@ import Login from './pages/Login';
 import Admin from './pages/admin/Index';
 import Index from './pages/Index';
 import Registro from './pages/Registro';
-import Vehiculos from './pages/admin/Vehiculos';
+import Zapatillas from './pages/admin/Zapatillas';
 import Clientes from './pages/admin/Clientes';
 
 
@@ -16,11 +16,11 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path={['/admin', '/admin/vehiculos','/admin/clientes']} >
+        <Route path={['/admin', '/admin/zapatillas','/admin/clientes']} >
           <Privatelayout>
             <Switch>
-              <route path='/admin/vehiculos'>
-                <Vehiculos/>
+              <route path='/admin/zapatillas'>
+                <Zapatillas/>
                                
 
               </route>
