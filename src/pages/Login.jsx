@@ -2,9 +2,11 @@ import React from 'react'
 
 const login = () => {
     return (
-        <div>
-            
-        </div>
+        <><div>
+            Layout Autenticacion
+        </div><div>
+                Pagina para el login
+            </div></>
     )
 }
 
