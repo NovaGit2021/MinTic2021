@@ -3,9 +3,9 @@ import React from 'react'
 const Admin = () => {
     return (
         <div>
-            Administrador
+            Index del panel de Administrador
         </div>
-    )
+    );
 }
 
 export default Admin

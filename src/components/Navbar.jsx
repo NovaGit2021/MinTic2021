@@ -1,9 +1,25 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+
 
 const Navbar = () => {
     return (
-        <div>Navbar</div>
-    )
+        <nav className="bg-indigo-500">
+            <ul className="flex w-full justify-between my-3">
+                <li>logo</li>
+                <li>Nav1</li>
+                <li>Nav2</li>
+                
+                <li className= "px-3">
+                    <Link to='/login'>
+                    <button className= "bg-green-600 p-2 rounded-lg shadow-md hover:bg-grey-600">Iniciar Cesión</button>
+                    
+                    </Link>
+                </li>    
+                
+            </ul>
+        </nav>
+    );
 }
 
 export default Navbar
