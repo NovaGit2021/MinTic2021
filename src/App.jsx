@@ -16,19 +16,15 @@ function App() {
   return (
     <Router>
       <Switch>
-        <Route path={['/admin', '/admin/zapatillas','/admin/clientes']} >
+        <Route path={['/admin', '/admin/zapatillas', '/admin/clientes']}>
           <Privatelayout>
             <Switch>
-              <route path='/admin/zapatillas'>
-                <Zapatillas/>
-                               
-
-              </route>
-              <route path='/admin/clientes'>
-               <Clientes/> 
-              </route>
-              
-             
+              <Route path='/admin/zapatillas'>
+                <Zapatillas />
+              </Route>
+              <Route path='/admin/clientes'>
+                <Clientes />
+              </Route>
               <Route path='/admin'>
                 <Admin />
               </Route>
@@ -55,10 +51,13 @@ function App() {
               </Route>
             </Switch>
           </Publiclayout>
-        </Route>
+       </Route >
       </Switch>
-    </Router >
+    </Router > 
   );
 };
+
+      
+        
 
 export default App;

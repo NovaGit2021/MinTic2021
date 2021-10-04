@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 const Login = () => {
   return (
     <div className='flex flex-col w-full justify-center items-center'>
-      <h2 className='m-3 text-center text-3xl font-extrabold text-gray-900'>
+      <h2 className='m-4 text-center text-3xl font-extrabold text-gray-900'>
         Inicia sesión en tu cuenta
       </h2>
       <form className='mt-8 max-w-md'>
