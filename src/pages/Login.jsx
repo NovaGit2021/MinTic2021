@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import logoGoogle from "../media/google_logo.png"
 
 
 const Login = () => {
@@ -23,25 +24,25 @@ const Login = () => {
             required
           />
         </div>
-        <div className='flex justify-between'>
-          <div>
+        <div className='p-3'>
+          <div className="flex justify-center">
             <label htmlFor='recuerdame'>
-              <input type='checkbox' name='recuerdame' />
+              <input type='checkbox' name='recuerdame'/>
               Recuerdame
             </label>
           </div>
-          <div>
+          <div className="m-3">
             <Link to='/'>¿Olvidaste tu contraseña?</Link>
           </div>
         </div>
-        <div>
+        <div className="flex justify-center">
           <Link to='/admin'>
             <button type='submit'>Iniciar Sesión</button>
           </Link>
         </div>
-        <div>O</div>
-        <div>
-          <button>Inicio con google</button>
+        <div className= "m-3 flex justify-center">------- O -------</div>
+        <div className="flex flex-col p-1">
+          <button className="flex justify-center bg-blue-300 rounded "><img src={logoGoogle} alt="Logo Google" className="h-9 m-1"/>Inicio con google</button>
         </div>
       </form>
     </div>
