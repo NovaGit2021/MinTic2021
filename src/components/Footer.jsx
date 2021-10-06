@@ -1,8 +1,11 @@
 import React from 'react'
+import LogoNovaG from './LogoNovaG'
 
 const Footer = () => {
     return (
-        <div className="bg-indigo-500">Footer</div>
+        <div className=" bg-blue-200 ">
+            <LogoNovaG />
+        </div>
     )
 }
 

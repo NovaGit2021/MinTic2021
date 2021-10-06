@@ -9,21 +9,29 @@ import Admin from './pages/admin/Index';
 import Index from './pages/Index';
 import Registro from './pages/Registro';
 import Zapatillas from './pages/admin/Zapatillas';
-import Clientes from './pages/admin/Clientes';
+import Perfil from './pages/admin/Perfil';
+import Ventas from './pages/admin/Ventas';
+import Usuarios from './pages/admin/Usuarios';
 
 
 function App() {
   return (
     <Router>
       <Switch>
-        <Route path={['/admin', '/admin/zapatillas', '/admin/clientes']}>
+        <Route path={['/admin', '/admin/zapatillas', '/admin/Perfil', '/admin/Ventas', '/admin/Usuarios']}>
           <Privatelayout>
             <Switch>
               <Route path='/admin/zapatillas'>
                 <Zapatillas />
               </Route>
-              <Route path='/admin/clientes'>
-                <Clientes />
+              <Route path='/admin/Perfil'>
+                <Perfil />
+              </Route>
+              <Route path='/admin/Ventas'>
+                <Ventas />
+              </Route>
+              <Route path='/admin/Usuarios'>
+                <Usuarios />
               </Route>
               <Route path='/admin'>
                 <Admin />
@@ -51,7 +59,7 @@ function App() {
               </Route>
             </Switch>
           </Publiclayout>
-       </Route >
+        </Route >
       </Switch>
     </Router > 
   );

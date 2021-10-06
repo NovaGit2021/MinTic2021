@@ -1,17 +1,17 @@
 import React, {useState, useEffect} from 'react'
 
 const zapatillasBackend = [
-   {
-       id:"4523",
-       marca:"Nike",
-       referencia:"Air Max",
-       talla:"34"
-   },
-   {
-       id:"9874",
-       marca:"Adidas",
-       referencia:"Neo",
-       talla:"39"
+    {
+        id:"4523",
+        marca:"Nike",
+        referencia:"Air Max",
+        talla:"34"
+    },
+    {
+        id:"9874",
+        marca:"Adidas",
+        referencia:"Neo",
+        talla:"39"
     },
     {
         id:"4432",
@@ -39,9 +39,9 @@ const Zapatillas = () => {
 
     useEffect(()=>{
         if(mostrarTabla){
-          setTextoBoton("Crear nuevas Zapatillas")
+            setTextoBoton("Crear nuevas Zapatillas")
         } else{
-          setTextoBoton("Listado de Zapatillas")
+            setTextoBoton("Listado de Zapatillas")
         }
     },[mostrarTabla])
     return (
@@ -51,7 +51,7 @@ const Zapatillas = () => {
         <button onClick={()=>
             {setMostrarTabla(!mostrarTabla);
         }}
-            className="text-white bg-green-600 p-1 rounded-full mg-10"> {textoBoton}
+            className="text-white bg-blue-400 p-4 rounded-full mg-10"> {textoBoton}
         </button>
         </div>
         {mostrarTabla ? <TablaZapatillas listaZapatillas={zapatillas}/>: <FormularioCreacionZapatillas/>}
@@ -64,7 +64,7 @@ const TablaZapatillas = ({listaZapatillas}) => {
         console.log("este es el listado de zapatillas en el componente tabla", listaZapatillas)
     },[listaZapatillas])
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="p-8 flex flex-col items-center justify-center">
         <table className="tabla">
         <thead className="">
         <tr className= "">
@@ -97,11 +97,11 @@ const FormularioCreacionZapatillas = () => {
         <h2 className= "flex justify-center m-4 font-black">Formulario de zapatillas</h2>
         </div>
         <form className='grid grid-cols-2'>
-        <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="ID de las zapatillas"/>
-        <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Marca de las zapatillas"/>
-        <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Referencia de las zapatillas"/>
-        <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="number" placeholder="Talla de las zapatillas" min="32" max="44"/>
-        <button type= "button" className= "col-span-2 m-4 bg-blue-500 p-2 hover:bg-blue-700">Guardar Zapatillas</button>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="ID de las zapatillas"/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Marca de las zapatillas"/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Referencia de las zapatillas"/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="number" placeholder="Talla de las zapatillas" min="32" max="44"/>
+        <button type= "button" className= "col-span-2 m-8 bg-green-400 p-2 hover:bg-green-600 rounded">Guardar Zapatillas</button>
         </form>
         </div>
     )
