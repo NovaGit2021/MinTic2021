@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,20 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `yarn build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+![Logo NovaGit_big](https://github.com/NovaGit2021/MinTic2021/blob/267ee59f7ba3fc83b5af2075d08b1a0f5e73960d/Logo%20NovaGit.jpg)
+
+
+## Organización: NovaGit2021 MinTic
+
+## Integrantes:
+:construction_worker:	Milena Palechor Bautista --- Scrum master
+
+:construction_worker:Leonel Pimienta--- Productor Owner
+
+:construction_worker:	Luisa Gabriela Castro --- Administradora Base de Datos
+
+:construction_worker:Jorge Luis Candamil--- Analista
+
+:construction_worker:Cristian David Bustos--- Desarrollador
+>>>>>>> 3d4eba24241cf48d6736150e9d51b354997a5f5f
