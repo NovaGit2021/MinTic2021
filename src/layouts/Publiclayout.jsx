@@ -1,4 +1,4 @@
-import Footer from '../components/Footer';
+//import Footer from '../components/Footer';//
 import React from 'react'
 import Navbar from '../components/Navbar'
 
@@ -8,10 +8,8 @@ const publiclayout = ({children}) => {
             <Navbar />
             <div className="h-full overflow-y-scroll bg-grey-500 ">
                 <main className="h-full">{children}</main>
-                <Footer />
-            </div>
-            
-        </div>
+                </div>
+                </div>
     );
 }
 

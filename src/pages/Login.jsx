@@ -42,7 +42,8 @@ const Login = () => {
         </div>
         <div className= "m-3 flex justify-center">------- O -------</div>
         <div className="flex flex-col p-1">
-          <button className="flex justify-center bg-blue-300 rounded "><img src={logoGoogle} alt="Logo Google" className="h-9 m-1"/>Inicio con google</button>
+        <button className="p-2 flex justify-center bg-blue-300 rounded ">
+            <img src={logoGoogle} alt="Logo Google" className="flex justify-center h-5 m-1"/>Inicio con google</button>
         </div>
       </form>
     </div>
