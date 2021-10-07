@@ -48,8 +48,14 @@ const RegistroDeVentas = () =>{
         <button onClick={()=>
             {setMostrarTabla(!mostrarTabla);
         }}
-            className="text-white bg-green-600 p-1 rounded-full mg-10"> {textoBoton}
+            className="text-white bg-blue-600 p-1 rounded-full m-10"> {textoBoton}
         </button>
+        <input className="p-5 m-4 text-white bg-gray-200 p-1 rounded m-10" placeholder="Búsqueda" />
+        <button className="text-white bg-blue-600 p-1 rounded m-10">
+            Editar
+        </button>
+        
+
         </div>
         {mostrarTabla ? <TablaVentas listaVentas={RegistrosVentas}/>: <FormularioRegistroDeVentas/>}
         </div>

@@ -1,11 +1,103 @@
-import React from 'react'
+import React, {useState, useEffect} from 'react'
 
-const Usuarios = () => {
+const zapatillasBackend = [
+    {
+        id:"1",
+        Rol:"g",
+    },
+    {
+        id:"2",
+        Rol:"g",
+    },
+    {
+        id:"3",
+        marca:"g",
+    },   
+    {
+        id:"4",
+        Rol:"g",
+    },
+];
+
+const Zapatillas = () => {
+    const [mostrarTabla, setMostrarTabla] = useState(true);
+    const [zapatillas, setZapatillas] = useState([]);
+    const [textoBoton, setTextoBoton] = useState('Crear nuevas Zapatillas')
+
+    useEffect(() =>{
+        setZapatillas(zapatillasBackend);
+    },[]);
+
+
+    useEffect(()=>{
+        if(mostrarTabla){
+            setTextoBoton("Crear Usuarios")
+        } else{
+            setTextoBoton("Listas de Usuarios")
+        }
+    },[mostrarTabla])
     return (
-        <div>
-            Adminstracion de Usuarios
+        <div className="w-500 flex flex-col items-center justify-start w-full m-8" >
+        <div className= "flex justify-between mg-10">
+        <h2 className="flex justify-center font-extrabold m-6">Página de administración de Usuarios</h2>
+        <button onClick={()=>
+            {setMostrarTabla(!mostrarTabla);
+        }}
+            className="text-white bg-blue-400 p-4 rounded-full m-10"> {textoBoton}
+        </button>
+        <input className="p-5 m-4 text-white bg-gray-200 p-1 rounded m-10" placeholder="Búsqueda" />
+        <button className="text-white bg-blue-600 p-1 rounded m-10">
+            Editar
+        </button>
+        </div>
+        {mostrarTabla ? <TablaZapatillas listaZapatillas={zapatillas}/>: <FormularioCreacionZapatillas/>}
         </div>
     )
 }
 
-export default Usuarios
+const TablaZapatillas = ({listaZapatillas}) => {
+    useEffect(()=>{
+        console.log("este es el listado de zapatillas en el componente tabla", listaZapatillas)
+    },[listaZapatillas])
+    return (
+        <div className="p-8 flex flex-col items-center justify-center">
+        <table className="tabla">
+        <thead className="">
+        <tr className= "">
+        <th>ID de Usuarios</th>
+        <th>Rol de Usuarios</th>
+        </tr>
+        </thead>
+        <tbody>
+            {listaZapatillas.map((zapatilla)=>{
+                return (
+                    <tr>
+                    <td>{zapatilla.id}</td>
+                    <td>{zapatilla.marca}</td>
+                </tr>
+                );
+            })}
+        </tbody>
+        </table>
+        </div>
+    )
+};
+const FormularioCreacionZapatillas = () => {
+    return (
+        <div className="flex flex-col justify-center m-12 min-w-max">
+        <div className= "flex justify-between">
+        <h2 className= "flex justify-center m-4 font-black">Formulario de Usuarios</h2>
+        </div>
+        <form className='grid grid-cols-2'>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="ID de las zapatillas"/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Marca de las zapatillas"/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Referencia de las zapatillas"/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="number" placeholder="Talla de las zapatillas" min="32" max="44"/>
+        <button type= "button" className= "col-span-2 m-8 bg-green-400 p-2 hover:bg-green-600 rounded">Guardar Usuarios</button>
+        </form>
+        </div>
+    )
+};
+
+
+export default Zapatillas

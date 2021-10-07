@@ -45,6 +45,9 @@ const Login = () => {
         <button className="p-2 flex justify-center bg-blue-300 rounded ">
             <img src={logoGoogle} alt="Logo Google" className="flex justify-center h-5 m-1"/>Inicio con google</button>
         </div>
+        <button className="p-2 flex justify-center bg-gray-300 rounded ">
+          Registrese
+        </button>
       </form>
     </div>
   );
