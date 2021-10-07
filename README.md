@@ -1,6 +1,5 @@
 
 
-![Logo NovaGit_big](https://github.com/NovaGit2021/MinTic2021/blob/267ee59f7ba3fc83b5af2075d08b1a0f5e73960d/Logo%20NovaGit.jpg)
 ![NovaGit_horizontal1](https://user-images.githubusercontent.com/88735952/136305929-2ef3f330-66ba-4578-b0d4-e2b0ce772245.png)
 =======
 
