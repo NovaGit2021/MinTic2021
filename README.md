@@ -1,6 +1,6 @@
 
 
-![NovaGit_horizontal1](https://user-images.githubusercontent.com/88735952/136305929-2ef3f330-66ba-4578-b0d4-e2b0ce772245.png)
+![LogoH](https://user-images.githubusercontent.com/88735952/136306256-a0dd4351-ceab-483c-b2c6-eb45e6022a86.PNG)
 =======
 
 ## PROYECTO MINTIC 2022
