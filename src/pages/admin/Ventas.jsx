@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from 'react'
+
+
+
 const RegistrosVentasBackend = [
     {
         idVenta:"aswe",
@@ -48,11 +51,10 @@ const RegistroDeVentas = () =>{
         <button onClick={()=>
             {setMostrarTabla(!mostrarTabla);
         }}
-            className="text-white bg-blue-600 p-1 rounded-full m-10"> {textoBoton}
+            className="text-white m-16 p-2 rounded ttransition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 "> {textoBoton}
         </button>
-        <input className="p-5 m-4 text-white bg-gray-200 p-1 rounded m-10" placeholder="Búsqueda" />
-        <button className="text-white bg-blue-600 p-1 rounded m-10">
-            Editar
+        <input className="p-5 m-16 text-black bg-gray-200 p-1 rounded m-10 ttransition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110" placeholder="Búsqueda" />
+        <button className="text-white m-16 p-2 ttransition rounded duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110">editar
         </button>
         
 

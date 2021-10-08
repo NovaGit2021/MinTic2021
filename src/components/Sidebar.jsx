@@ -19,7 +19,8 @@ const Sidebar = () => {
                 </div>
                 <Link to='/'>
                 <div className='my-4 p-3'>
-                    <button className='justify-center p-1 my-6 bg-pink-400 hover:bg-pink-500 flex  w-full items-center text-white rounded-md'>Cerrar Sesión</button>
+                    <button className='justify-center p-1 my-6 bg-pink-400 hover:bg-pink-500 flex  w-full items-center text-white rounded-md 
+                    ttransition rounded duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110'>Cerrar Sesión</button>
                 </div>
                 </Link>
             </nav>
@@ -30,7 +31,7 @@ const Sidebar = () => {
 const Ruta = ({icono,ruta,nombre,ruta2,nombre2}) =>{
     return(
         <Link to={ruta}>
-            <button className='p-1 my-6 bg-blue-400 hover:bg-blue-500 flex juntify-bet w-full items-center text-white rounded-md'>
+            <button className='p-1 my-6 bg-blue-400 hover:bg-blue-500 flex juntify-bet w-full items-center text-white rounded-md ttransition rounded duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110'>
             <i className={`${icono} w-10`} />
                 {nombre}
             </button>
