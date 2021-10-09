@@ -1,4 +1,45 @@
 import React, {useState, useEffect} from 'react'
+import axios from 'axios';
+
+//elementos que estan en el codigo pero no se donde ponerlo//
+
+// async //
+
+/*const options ={
+    method: 'POST',
+    url:'',
+    headers: { 'content-Type': 'application/json'},
+    data: { name: TablaZapatillas.name, brand: TablaZapatillas.brand, model: TablaZapatillas.model}
+};*/
+
+
+/*await axios
+.request(options)
+.then(function (response){
+    console.log(response.data);
+})
+.catch(function (error){
+    console.error(error);
+});*/
+
+/*useEffect(() => {
+    if (mostrarTabla){
+    const options = {method: 'GET', url: ''};
+
+    axios
+    .request(options)
+    .then(function (response){
+        useZapatillas(response.data);
+    })
+    .catch(function (error) {
+        console.error(error);
+    });
+}
+}, [mostrarTabla]);*/
+
+
+
+
 
 const zapatillasBackend = [
     {
@@ -46,15 +87,15 @@ const Zapatillas = () => {
     },[mostrarTabla])
     return (
         <div className="w-500 flex flex-col items-center justify-start w-full m-8" >
+            <h2 className="letra">Página de administración de Zapatillas</h2>
         <div className= "flex justify-between mg-10">
-        <h2 className="flex justify-center font-extrabold m-6">Página de administración de Zapatillas</h2>
         <button onClick={()=>
             {setMostrarTabla(!mostrarTabla);
         }}
-            className="text-white bg-blue-400 p-4 rounded-full m-10"> {textoBoton}
+            className="text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 "> {textoBoton}
         </button>
-        <input className="p-5 m-4 text-white bg-gray-200 p-1 rounded m-10" placeholder="Búsqueda" />
-        <button className="text-white bg-blue-600 p-1 rounded m-10">
+        <input className="p-5 m-16 text-black bg-gray-200 p-1 rounded-full m-10" placeholder="Búsqueda" />
+        <button className="text-white m-16 p-2 ttransition rounded-lg duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110">
             Editar
         </button>
         </div>
@@ -68,7 +109,7 @@ const TablaZapatillas = ({listaZapatillas}) => {
         console.log("este es el listado de zapatillas en el componente tabla", listaZapatillas)
     },[listaZapatillas])
     return (
-        <div className="p-8 flex flex-col items-center justify-center">
+        <div className="p-8 flex flex-col items-center justify-center w-full">
         <table className="tabla">
         <thead className="">
         <tr className= "">
@@ -93,10 +134,12 @@ const TablaZapatillas = ({listaZapatillas}) => {
         </table>
         </div>
     )
+
+
 };
 const FormularioCreacionZapatillas = () => {
     return (
-        <div className="flex flex-col justify-center m-12 min-w-max">
+        <div className="flex flex-col justify-center m-12 min-w-max w-full">
         <div className= "flex justify-between">
         <h2 className= "flex justify-center m-4 font-black">Formulario de zapatillas</h2>
         </div>
@@ -105,7 +148,7 @@ const FormularioCreacionZapatillas = () => {
         <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Marca de las zapatillas"/>
         <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Referencia de las zapatillas"/>
         <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="number" placeholder="Talla de las zapatillas" min="32" max="44"/>
-        <button type= "button" className= "col-span-2 m-8 bg-green-400 p-2 hover:bg-green-600 rounded">Guardar Zapatillas</button>
+        <button type= "button" className= "col-span-2 m-4 bg-blue-500 p-2 hover:bg-blue-700 text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ">Guardar Zapatillas</button>
         </form>
         </div>
     )

@@ -9,7 +9,7 @@ const Login = () => {
       <h2 className='m-4 text-center text-3xl font-extrabold text-gray-900'>
         Inicia sesión en tu cuenta
       </h2>
-      <form className='mt-8 max-w-md'>
+      <form className='p-5 mt-8 max-w-md'>
         <div>
           <input
             className='appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm'
@@ -35,19 +35,19 @@ const Login = () => {
             <Link to='/'>¿Olvidaste tu contraseña?</Link>
           </div>
         </div>
-        <div className="flex justify-center">
+        <div className="flex justify-center bg-gray-200 p-2 rounded-lg shadow-md ttransition rounded duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-90 ">
           <Link to='/admin'>
             <button type='submit'>Iniciar Sesión</button>
           </Link>
         </div>
         <div className= "m-3 flex justify-center">------- O -------</div>
         <div className="flex flex-col p-1">
-        <button className="p-2 flex justify-center bg-blue-300 rounded ">
+        <button className=" p-2 flex justify-center bg-blue-200 bg-blue-600 p-2 text-white rounded-lg shadow-md ttransition rounded duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110 ">
             <img src={logoGoogle} alt="Logo Google" className="flex justify-center h-5 m-1"/>Inicio con google</button>
-        </div>
-        <button className="p-2 flex justify-center bg-gray-300 rounded ">
+            <button className="m-5 p-2 flex justify-center bg-gray-200 p-2 rounded-lg shadow-md ttransition rounded duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-90">
           Registrese
         </button>
+        </div>
       </form>
     </div>
   );

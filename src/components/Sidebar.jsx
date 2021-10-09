@@ -1,12 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import LogoNovaG from './LogoNovaG';
 import { Link } from 'react-router-dom';
+import useActiveRoute from '../hooks/useActiveRoute';
+
 
 
 
 const Sidebar = () => {
     return(
-            <nav className= 'hidden md:flex md:w-72 border border-blue-400 h-full flex-col bg-blue-300 p-6'>
+            <nav className= 'hidden md:flex md:w-72  h-full flex-col bg-blue-300 p-6'>
                 <Link to='/admin'>
                     <LogoNovaG />
                 </Link>
@@ -28,10 +30,14 @@ const Sidebar = () => {
     );
 };
 
-const Ruta = ({icono,ruta,nombre,ruta2,nombre2}) =>{
+const Ruta = ({icono,ruta,nombre}) =>{
+
+    const isActive = useActiveRoute(ruta);
+
     return(
         <Link to={ruta}>
-            <button className='p-1 my-6 bg-blue-400 hover:bg-blue-500 flex juntify-bet w-full items-center text-white rounded-md ttransition rounded duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110'>
+            <button className={`p-1 my-6 bg-${isActive ? 'green' : 'blue'
+            }-400 hover:bg-blue-500 flex w-full items-center text-white rounded-md ttransition rounded duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110`}>
             <i className={`${icono} w-10`} />
                 {nombre}
             </button>
@@ -41,3 +47,5 @@ const Ruta = ({icono,ruta,nombre,ruta2,nombre2}) =>{
 
 
 export default Sidebar
+
+/* bg-blue-400 hover:bg-blue-500 */

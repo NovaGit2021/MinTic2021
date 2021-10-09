@@ -46,15 +46,15 @@ const RegistroDeVentas = () =>{
     },[mostrarTabla])
     return(
         <div className="w-500 flex flex-col items-center justify-start w-full m-8" >
+            <h2 className="letra">Página de administración de Ventas</h2>
         <div className= "flex justify-between mg-10">
-        <h2 className="flex justify-center font-extrabold m-6">Página de administración de Ventas</h2>
         <button onClick={()=>
             {setMostrarTabla(!mostrarTabla);
         }}
-            className="text-white m-16 p-2 rounded ttransition duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 "> {textoBoton}
+            className="text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 "> {textoBoton}
         </button>
-        <input className="p-5 m-16 text-black bg-gray-200 p-1 rounded m-10 ttransition duration-500 ease-in-out  transform hover:-translate-y-1 hover:scale-110" placeholder="Búsqueda" />
-        <button className="text-white m-16 p-2 ttransition rounded duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110">editar
+        <input className="p-5 m-16 text-black bg-gray-200 p-1 rounded-full m-10 " placeholder="Búsqueda" />
+        <button className="text-white m-16 p-2 ttransition rounded-lg duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110">editar
         </button>
         
 
@@ -68,7 +68,7 @@ const TablaVentas = ({listaVentas}) => {
         console.log("este es el listado de ventas en el componente tabla", listaVentas)
     },[listaVentas])
     return(
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center w-full">
         <table className="tabla">
         <thead className="">
         <tr className= "">
@@ -96,7 +96,7 @@ const TablaVentas = ({listaVentas}) => {
 }
 const FormularioRegistroDeVentas = () => {
     return (
-        <div className="flex flex-col justify-center m-12 min-w-max">
+        <div className="flex flex-col justify-center m-12 min-w-max w-full">
         <div className= "flex justify-between">
         <h2>Formulario Registro de Ventas</h2>
         </div>
@@ -105,7 +105,7 @@ const FormularioRegistroDeVentas = () => {
         <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Nombre del Comprador"/>
         <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="ID de las zapatillas"/>
         <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Precio"/>
-        <button type= "button" className= "col-span-2 m-4 bg-blue-500 p-2 hover:bg-blue-700">Guardar Venta</button>
+        <button type= "button" className= "col-span-2 m-4 bg-blue-500 p-2 hover:bg-blue-700 text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ">Guardar Venta</button>
         </form>
             
         </div>
