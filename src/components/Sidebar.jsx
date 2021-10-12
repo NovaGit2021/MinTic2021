@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import LogoNovaG from './LogoNovaG';
 import { Link } from 'react-router-dom';
 import useActiveRoute from '../hooks/useActiveRoute';
@@ -13,16 +13,16 @@ const Sidebar = () => {
                     <LogoNovaG />
                 </Link>
                 <div className="my-4 p-3">
-                    <Ruta icono="fa-solid fa-user" ruta="/admin/perfil" nombre="Perfil" />
-                    <Ruta icono="fa-solid fa-shoe-prints" ruta="/admin/zapatillas" nombre="Zapatos" />
-                    <Ruta icono="fa-solid fa-bag-shopping" ruta="/admin/ventas" nombre="Ventas" />
-                    <Ruta icono="fa-solid fa-users" ruta="/admin/usuarios" nombre="Usuarios" />
+                    <Ruta icono="fas fa-solid fa-user" ruta="/admin/perfil" nombre="Perfil" />
+                    <Ruta icono="fas fa-solid fa-shoe-prints" ruta="/admin/zapatillas" nombre="Zapatos" />
+                    <Ruta icono="fas fa-solid fa-shopping-bag" ruta="/admin/ventas" nombre="Ventas" />
+                    <Ruta icono="fas fa-solid fa-users" ruta="/admin/usuarios" nombre="Usuarios" />
                     
                 </div>
                 <Link to='/'>
                 <div className='my-4 p-3'>
                     <button className='justify-center p-1 my-6 bg-pink-400 hover:bg-pink-500 flex  w-full items-center text-white rounded-md 
-                    ttransition rounded duration-500 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110'>Cerrar Sesión</button>
+                    transition  duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110'>Cerrar Sesión</button>
                 </div>
                 </Link>
             </nav>
@@ -37,7 +37,7 @@ const Ruta = ({icono,ruta,nombre}) =>{
     return(
         <Link to={ruta}>
             <button className={`p-1 my-6 bg-${isActive ? 'green' : 'blue'
-            }-400 hover:bg-blue-500 flex w-full items-center text-white rounded-md ttransition rounded duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110`}>
+            }-400 hover:bg-blue-500 flex w-full items-center text-white rounded-md ttransition  duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110`}>
             <i className={`${icono} w-10`} />
                 {nombre}
             </button>

@@ -6,7 +6,7 @@ const Navbar = () => {
     return (
         <nav className="px-3 bg-blue-300">
             <ul className="p-2 flex w-full justify-between my-3">
-                <img src={logo} className="h-12 h-10 "alt =""/>
+                <img src={logo} className="h-12  "alt =""/>
                 <li className='h-4 my-3 text-white font-extrabold'>ShoeStore.novaGit</li>
                 
                 <li className= "px-3">

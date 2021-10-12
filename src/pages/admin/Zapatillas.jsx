@@ -1,5 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import { nanoid } from 'nanoid';
+import React, {useState, useEffect, useRef} from 'react'
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import {Dialog, Tooltip} from "@mui/material";
+//import axios from 'axios';
 
 //elementos que estan en el codigo pero no se donde ponerlo//
 
@@ -22,22 +26,19 @@ import axios from 'axios';
     console.error(error);
 });*/
 
-/*useEffect(() => {
-    if (mostrarTabla){
+/* useEffect(() => {
+    const obetenerZapatillas = async () =>{
     const options = {method: 'GET', url: ''};
 
     axios
     .request(options)
     .then(function (response){
-        useZapatillas(response.data);
+        setZapatillas(response.data);
     })
     .catch(function (error) {
         console.error(error);
     });
-}
-}, [mostrarTabla]);*/
-
-
+}; */
 
 
 
@@ -72,12 +73,37 @@ const Zapatillas = () => {
     const [mostrarTabla, setMostrarTabla] = useState(true);
     const [zapatillas, setZapatillas] = useState([]);
     const [textoBoton, setTextoBoton] = useState('Crear nuevas Zapatillas')
-
+    const [ejecutarConsulta, setEjecutarConsulta] = useState(true);
+//como en verdad se obtienen del verdadero backend
+    useEffect (() => {
+        const obtenerZapatillas = async () =>{
+            const options = {method: 'GET', url: ''};
+        
+            axios
+            .request(options)
+            .then(function (response){
+                setZapatillas(response.data);
+            })
+            .catch(function (error) {
+                console.error(error);
+            });
+        }; 
+        if (ejecutarConsulta){
+            obtenerZapatillas();
+            setEjecutarConsulta(false);
+        }
+    }, [ejecutarConsulta])
+//obtener lista de vehículos del supuesto backend
     useEffect(() =>{
         setZapatillas(zapatillasBackend);
     },[]);
-
-
+// cierre obtener lista de vehículos del supuesto backend
+ useEffect(() => {
+    if (mostrarTabla){
+      setEjecutarConsulta(true)
+    }
+    },[mostrarTabla]);
+//aquí termina como en verdad se obtienen del verdadero backend
     useEffect(()=>{
         if(mostrarTabla){
             setTextoBoton("Crear nuevas Zapatillas")
@@ -88,28 +114,37 @@ const Zapatillas = () => {
     return (
         <div className="w-500 flex flex-col items-center justify-start w-full m-8" >
             <h2 className="letra">Página de administración de Zapatillas</h2>
-        <div className= "flex justify-between mg-10">
+        <div className= "flex justify-between m-1">
         <button onClick={()=>
             {setMostrarTabla(!mostrarTabla);
         }}
-            className="text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 "> {textoBoton}
-        </button>
-        <input className="p-5 m-16 text-black bg-gray-200 p-1 rounded-full m-10" placeholder="Búsqueda" />
-        <button className="text-white m-16 p-2 ttransition rounded-lg duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110">
-            Editar
+            className="text-white my-2 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 "> {textoBoton}
         </button>
         </div>
-        {mostrarTabla ? <TablaZapatillas listaZapatillas={zapatillas}/>: <FormularioCreacionZapatillas/>}
+        {mostrarTabla ? <TablaZapatillas listaZapatillas={zapatillas} setEjecutarConsulta={setEjecutarConsulta}/>: <FormularioCreacionZapatillas/>}
         </div>
     )
 }
 
-const TablaZapatillas = ({listaZapatillas}) => {
-    useEffect(()=>{
-        console.log("este es el listado de zapatillas en el componente tabla", listaZapatillas)
-    },[listaZapatillas])
+const TablaZapatillas = ({listaZapatillas, setEjecutarConsulta }) => {
+    const [busqueda, setBusqueda] = useState('');
+    const [zapatillasFiltradas, setZapatillasFiltradas] = useState(listaZapatillas);
+
+    useEffect (()=>{
+        setZapatillasFiltradas(
+        listaZapatillas.filter((elemento=>{
+            console.log("elemento", elemento);
+            return JSON.stringify(elemento).toLowerCase().includes(busqueda.toLowerCase());
+        }))
+        )
+    }, [busqueda, listaZapatillas]);
+
     return (
         <div className="p-8 flex flex-col items-center justify-center w-full">
+        <input 
+        value={busqueda}
+        onChange={e=>setBusqueda(e.target.value)}
+        className="p-5 mx-1 my-2 text-black bg-gray-200 rounded-full" placeholder="Búsqueda" />
         <table className="tabla">
         <thead className="">
         <tr className= "">
@@ -117,40 +152,196 @@ const TablaZapatillas = ({listaZapatillas}) => {
         <th>Marca de las zapatillas</th>
         <th>Referencia de las zapatillas</th>
         <th>Talla de las zapatillas</th>
+        <th>Acciones</th>
         </tr>
         </thead>
         <tbody>
-            {listaZapatillas.map((zapatilla)=>{
+            {zapatillasFiltradas.map((zapatilla)=>{
                 return (
-                    <tr>
-                    <td>{zapatilla.id}</td>
-                    <td>{zapatilla.marca}</td>
-                    <td>{zapatilla.referencia}</td>
-                    <td>{zapatilla.talla}</td>
-                </tr>
+                    <FilaZapatilla key={nanoid()} zapatilla={zapatilla} setEjecutarConsulta={setEjecutarConsulta}/>
                 );
             })}
         </tbody>
         </table>
         </div>
     )
-
-
 };
-const FormularioCreacionZapatillas = () => {
+const FilaZapatilla = ({zapatilla, setEjecutarConsulta}) =>{
+    const [edit, setEdit] = useState(false);
+    const [openDialog, setOpenDialog] = useState(false); //Para el dialogo en la línea 287
+    const[infoNuevasZapatillas, setInfoNuevasZapatillas] = useState({
+        id: zapatilla.id,
+        marca: zapatilla.marca,
+        referencia: zapatilla.referencia,
+        talla: zapatilla.talla,
+    })
+
+    const actualizarZapatillas = async () =>{
+        console.log(infoNuevasZapatillas);
+        //enviar info al backend
+        const options = {
+            method: 'PATCH',
+            url: '',
+            headers: {'Content-Type': 'application/json'},
+            data:{...infoNuevasZapatillas, id: zapatilla.id},
+        };
+        await axios 
+        .request(options)
+        .then(function(response){
+            console.log(response.data)
+            toast.succes("Zapatillas modificadas con éxito");
+            setEdit(false);
+            setEjecutarConsulta(true);
+        })
+        .catch(function(error){
+            console.error(error);
+            toast.error("Error modificando zapatillas")
+        });
+    };
+    const eliminarZapatillas = async () =>{
+        const options = {
+            method: 'DELETE',
+            url: '',
+            headers: {'Content-Type': 'application/json'},
+            data:{id: zapatilla.id},
+        };
+        await axios 
+        .request(options)
+        .then(function(response){
+            console.log(response.data)
+            toast.succes("Zapatillas eliminadas con éxito");
+            setEjecutarConsulta(true);
+        })
+        .catch(function(error){
+            console.error(error);
+            toast.error("Error eliminando zapatillas")
+        });
+        setOpenDialog(false);
+    }
+    return(
+        <tr>
+        {edit ? (
+        <>
+            <td>
+            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" 
+            type="text" 
+            value={infoNuevasZapatillas.id} 
+            onChange={e=>setInfoNuevasZapatillas({...infoNuevasZapatillas,id: e.target.value})}/>
+            </td>
+            <td>
+            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2"
+            type="text" 
+            value={infoNuevasZapatillas.marca}
+            onChange={e=>setInfoNuevasZapatillas({...infoNuevasZapatillas,marca: e.target.value})}/>
+            </td>
+            <td>
+            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" 
+            type="text" 
+            value={infoNuevasZapatillas.referencia}
+            onChange={e=>setInfoNuevasZapatillas({...infoNuevasZapatillas,referencia: e.target.value})}/>
+            </td>
+            <td>
+            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2"
+            type="text" 
+            value={infoNuevasZapatillas.talla}
+            onChange={e=>setInfoNuevasZapatillas({...infoNuevasZapatillas,talla: e.target.value})}/>
+            </td>
+        </>
+        ):(
+        <>
+        <td>{zapatilla.id}</td>
+        <td>{zapatilla.marca}</td>
+        <td>{zapatilla.referencia}</td>
+        <td>{zapatilla.talla}</td>
+        </>
+        )}
+        <td>
+            <div className= "flex w-full justify-around">
+                {edit ? (
+                    <>
+                    <Tooltip title="Confirmar edición" arrow>
+                    <i 
+                    onClick={()=> actualizarZapatillas()}
+                    className="fas fa-check-circle text-green-500 hover:text-green-800"/>
+                    </Tooltip>
+                    <Tooltip title="Cancelar edición" arrow>
+                    <i 
+                    onClick={()=>setEdit(!edit)} 
+                    className="far fa-window-close text-red-500 hover:text-black"/>
+                    </Tooltip>
+                    </>
+                ):(    
+                <>
+                <Tooltip title="Editar zapatillas" arrow>
+                <i 
+                onClick={()=>setEdit(!edit)} 
+                className="fas fa-pencil-alt text-gray-500 hover:text-black"/>
+                </Tooltip>
+                <Tooltip title="Eliminar zapatillas" arrow> 
+                <i onClick={()=> setOpenDialog(true)}className="fas fa-trash text-red-500 hover:text-red-900"/>
+                </Tooltip>
+                </>
+                )}
+            </div>
+            <Dialog open={openDialog}>
+            <div className="p-8 flex flex-col">
+            <h1 className="text-gray-900 text-2xl font-bold">¿Está seguro de querer eliminar las zapatillas?</h1>
+            <div className="flex w-full justify-center my-4">
+            <button onClick={()=> eliminarZapatillas}className="mx-2 px-4 py-2 bg-blue-500 hover:bg-blue-700">Sí</button>
+            <button onClick={()=> setOpenDialog(false)}className="mx-2 px-4 py-2 bg-pink-500 hover:bg-pink-700">No</button>
+            </div>
+            </div>
+            </Dialog>
+        </td>
+    </tr>
+    )
+}
+const FormularioCreacionZapatillas = ({setMostrarTabla, listaZapatillas, setZapatillas}) => {
+    const form = useRef(null);
+
+    const submitForm = async (e) => {
+        e.preventDefault();
+        const fd = new FormData (form.current);
+
+        const nuevasZapatillas = {};
+        fd.forEach((value,key) => {
+            nuevasZapatillas[key]= value;
+        });
+
+        /* const options = {
+            method: 'POST',
+            url: '',
+            headers: {'Content-Type': 'aplication/json'},
+            data: {id: nuevasZapatillas.id, marca: nuevasZapatillas.marca, referencia: nuevasZapatillas.referencia, talla: nuevasZapatillas.talla},
+        }; */
+
+        await axios 
+            //.request(options)
+            .then (function(response){
+                console.log(response.data);
+                toast.succes("Zapatillas agregadas con éxito");
+            })
+            .catch(function(error){
+                console.error(error);
+                toast.error("Error creando zapatillas")
+            });
+        setMostrarTabla(true);
+    };
+
     return (
+
         <div className="flex flex-col justify-center m-12 min-w-max w-full">
         <div className= "flex justify-between">
         <h2 className= "flex justify-center m-4 font-black">Formulario de zapatillas</h2>
         </div>
-        <form className='grid grid-cols-2'>
-        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="ID de las zapatillas"/>
-        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Marca de las zapatillas"/>
-        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Referencia de las zapatillas"/>
-        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="number" placeholder="Talla de las zapatillas" min="32" max="44"/>
-        <button type= "button" className= "col-span-2 m-4 bg-blue-500 p-2 hover:bg-blue-700 text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ">Guardar Zapatillas</button>
+        <form ref={form} onSubmit={submitForm} className='grid grid-cols-2'>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="ID de las zapatillas" required/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Marca de las zapatillas" required/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Referencia de las zapatillas" required/>
+        <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="number" placeholder="Talla de las zapatillas" min="32" max="44" required/>
+        <button type= "button" className= "col-span-2 text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ">Guardar Zapatillas</button>
         </form>
-        </div>
+        </div> 
     )
 };
 

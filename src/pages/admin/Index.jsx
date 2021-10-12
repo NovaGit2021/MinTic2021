@@ -5,7 +5,7 @@ import React from 'react'
 const Admin = () => {
     return (
         <div>
-            <input className="p-5 m-4 text-white bg-gray-200 p-1 rounded mg-10" placeholder="Búsqueda" />
+            <input className="p-5 m-4 text-white bg-gray-200 rounded mg-10" placeholder="Búsqueda" />
             <main>
             <section className="contenedor sobre-nosotros">
             <h2 className="m-10 flex justify-center text-blue-400 font-extrabold">Nuestro producto</h2>

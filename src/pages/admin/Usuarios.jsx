@@ -45,7 +45,7 @@ const Zapatillas = () => {
         }}
             className="text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110"> {textoBoton}
         </button>
-        <input className="p-5 m-16 text-black bg-gray-200 p-1 rounded-full m-10" placeholder="Búsqueda" />
+        <input className="p-5 m-16 text-black bg-gray-200 rounded-full" placeholder="Búsqueda" />
         <button className="text-white m-16 p-2 ttransition rounded-lg duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110">
             Editar
         </button>
