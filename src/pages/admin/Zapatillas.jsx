@@ -3,47 +3,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import axios from 'axios';
 import 'react-toastify/dist/ReactToastify.css';
 import { nanoid } from 'nanoid';
-
-
-//import { obtenerZapatillas, crearZapatilla, actualizarZapatillas, eliminarZapatillas } from "utils/api";
-//import { Dialog, Tooltip } from "@mui/material";
+import { Dialog, Tooltip } from '@material-ui/core';
 
 
 
-//elementos que estan en el codigo pero no se donde ponerlo//
-
-// async //
-
-/*const options ={
-    method: 'POST',
-    url:'',
-    headers: { 'content-Type': 'application/json'},
-    data: { name: TablaZapatillas.name, brand: TablaZapatillas.brand, model: TablaZapatillas.model}
-};*/
-
-
-/*await axios
-.request(options)
-.then(function (response){
-    console.log(response.data);
-})
-.catch(function (error){
-    console.error(error);
-});*/
-
-/* useEffect(() => {
-    const obetenerZapatillas = async () =>{
-    const options = {method: 'GET', url: ''};
-
-    axios
-    .request(options)
-    .then(function (response){
-        setZapatillas(response.data);
-    })
-    .catch(function (error) {
-        console.error(error);
-    });
-}; */
 
 const Zapatillas = () => {
     const [mostrarTabla, setMostrarTabla] = useState(true);
@@ -135,6 +98,7 @@ const TablaZapatillas = ({ listaZapatillas, setEjecutarConsulta }) => {
                 <table className="tabla">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Referencia</th>
                             <th>Marca</th>
                             <th>Edición</th>
@@ -168,6 +132,7 @@ const TablaZapatillas = ({ listaZapatillas, setEjecutarConsulta }) => {
 const FilaZapatilla = ({ zapatilla, setEjecutarConsulta }) => {
     const [edit, setEdit] = useState(false);
     const [infoNuevasZapatillas, setInfoNuevasZapatillas] = useState({
+        _id: zapatilla._id,
         reference: zapatilla.reference,
         brand: zapatilla.brand,
         edition: zapatilla.edition,
@@ -222,6 +187,7 @@ const FilaZapatilla = ({ zapatilla, setEjecutarConsulta }) => {
 
             {edit ? (
                 <>
+                    
                     <td>
                         <input
                             className="bg-gray-50 border-gray-600 p-2 rounded-lg m-2"
@@ -249,6 +215,7 @@ const FilaZapatilla = ({ zapatilla, setEjecutarConsulta }) => {
                 </>
             ) : (
                 <>
+                    <td>{zapatilla._id.slice(19)}</td>
                     <td>{zapatilla.reference}</td>
                     <td>{zapatilla.brand}</td>
                     <td>{zapatilla.edition}</td>
@@ -280,145 +247,11 @@ const FilaZapatilla = ({ zapatilla, setEjecutarConsulta }) => {
         </tr>
     );
 
-    /*    const [edit, setEdit] = useState(false);
-        const [openDialog, setOpenDialog] = useState(false); //Para el dialogo en la línea 287
-        const [infoNuevasZapatillas, setInfoNuevasZapatillas] = useState({
-                _id: zapatilla._id,
-            reference: zapatilla.reference,
-            brand: zapatilla.brand,
-            edition: zapatilla.edition,
-        });
     
-        const actualizarZapatillas = async () => {
-            //console.log(infoNuevasZapatillas);
-            //enviar info al backend
-            const options = {
-                method: 'PATCH',
-            url: 'http://localhost:5000/zapatillas/editar/',
-            headers: {'Content-Type': 'application/json' },
-            data: {...infoNuevasZapatillas, id: zapatilla._id },
-            };
-            await axios
-            .request(options)
-            .then(function (response) {
-                console.log(response.data)
-                    toast.success("Zapatillas modificadas con éxito");
-            setEdit(false);
-            setEjecutarConsulta(true);
-                })
-            .catch(function (error) {
-                console.error(error);
-            toast.error("Error modificando zapatillas")
-                });
-        };
-        const eliminarZapatillas = async () => {
-            const options = {
-                method: 'DELETE',
-            url: 'http://localhost:5000/zapatillas/eliminar/',
-            headers: {'Content-Type': 'application/json' },
-            data: {id: zapatilla._id },
-            };
-            await axios
-            .request(options)
-            .then(function (response) {
-                console.log(response.data)
-                    toast.succes("Zapatillas eliminadas con éxito");
-            setEjecutarConsulta(true);
-                })
-            .catch(function (error) {
-                console.error(error);
-            toast.error("Error eliminando zapatillas")
-                });
-            setOpenDialog(false);
-        }
-            return (
-            //Campos que se traen de la BD
-            <tr>
-                {edit ? (
-                    <>
-                        <td>
-                            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2"
-                                type="text"
-                                value={infoNuevasZapatillas.id}
-                                onChange={e => setInfoNuevasZapatillas({ ...infoNuevasZapatillas, id: e.target.value })} />
-                        </td>
-                        <td>
-                            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2"
-                                type="text"
-                                value={infoNuevasZapatillas.marca}
-                                onChange={e => setInfoNuevasZapatillas({ ...infoNuevasZapatillas, marca: e.target.value })} />
-                        </td>
-                        <td>
-                            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2"
-                                type="text"
-                                value={infoNuevasZapatillas.referencia}
-                                onChange={e => setInfoNuevasZapatillas({ ...infoNuevasZapatillas, referencia: e.target.value })} />
-                        </td>
-                        <td>
-                            <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2"
-                                type="text"
-                                value={infoNuevasZapatillas.talla}
-                                onChange={e => setInfoNuevasZapatillas({ ...infoNuevasZapatillas, talla: e.target.value })} />
-                        </td>
-                    </>
-                ) : (
-                    <>
-
-                        <td>{zapatilla.reference}</td>
-                        <td>{zapatilla.brand}</td>
-                        <td>{zapatilla.edition}</td>
-                    </>
-                )}
-                <td>
-                    <div className="flex w-full justify-around">
-                        {edit ? (
-                            <>
-                                <Tooltip title="Confirmar edición" arrow>
-                                    <i
-                                        onClick={() => actualizarZapatillas()}
-                                        className="fas fa-check-circle text-green-500 hover:text-green-800" />
-                                </Tooltip>
-                                <Tooltip title="Cancelar edición" arrow>
-                                    <i
-                                        onClick={() => setEdit(!edit)}
-                                        className="far fa-window-close text-red-500 hover:text-black" />
-                                </Tooltip>
-                            </>
-                        ) : (
-                            <>
-                                <Tooltip title="Editar zapatillas" arrow>
-                                    <i
-                                        onClick={() => setEdit(!edit)}
-                                        className="fas fa-pencil-alt text-gray-500 hover:text-black" />
-                                </Tooltip>
-                                <Tooltip title="Eliminar zapatillas" arrow>
-                                    <i onClick={() => setOpenDialog(true)} className="fas fa-trash text-red-700 hover:text-red-500" />
-                                </Tooltip>
-                            </>
-                        )}
-                    </div>
-                    <Dialog open={openDialog}>
-                        <div className="p-8 flex flex-col">
-                            <h1 className="text-gray-900 text-2xl font-bold">¿Está seguro de querer eliminar las zapatillas?</h1>
-                            <div className="flex w-full justify-center my-4">
-                                <button onClick={() => eliminarZapatillas} className="mx-2 px-4 py-2 bg-blue-500 hover:bg-blue-700">Sí</button>
-                                <button onClick={() => setOpenDialog(false)} className="mx-2 px-4 py-2 bg-pink-500 hover:bg-pink-700">No</button>
-                            </div>
-                        </div>
-                    </Dialog>
-                </td>
-            </tr>
-            )*/
 };
 const FormularioCreacionZapatillas = ({ setMostrarTabla, listaZapatillas, setZapatillas }) => {
-    const [reference, setReference]= useState();
-    const [brand, setBrand]= useState();
-    const [edition, setEdition]= useState();
-    const form = useRef(null);
 
-    const enviarAlBackend = () => {
-        console.log("referencia", reference, "brand", brand, "edition", edition);
-    };
+    const form = useRef(null);
 
     const submitForm = async (e) => {
         e.preventDefault();
@@ -431,9 +264,12 @@ const FormularioCreacionZapatillas = ({ setMostrarTabla, listaZapatillas, setZap
 
         const options = {
             method: 'POST',
-            url: 'http://localhost:5000/zapatillas/nuevo',
+            url: 'http://localhost:5000/zapatillas/nuevo/',
             headers: { 'Content-Type': 'aplication/json' },
-            data: { reference: nuevasZapatillas.reference, brand: nuevasZapatillas.brand, edition: nuevasZapatillas.edition },
+            data: { 
+                reference: nuevasZapatillas.reference, 
+                brand: nuevasZapatillas.brand, 
+                edition: nuevasZapatillas.edition },
         };
 
         await axios
@@ -455,31 +291,14 @@ const FormularioCreacionZapatillas = ({ setMostrarTabla, listaZapatillas, setZap
             <h2 className="text-2xl font-extrabold text-gray-800">Crear nueva zapatilla</h2>
             <form ref={form} onSubmit={submitForm} className='flex flex-col'>
                 Rerefencia
-                <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Ref" required 
-                value={brand}
-                onChange={(e)=>{
-                    setReference(e.target.value);
-                }}
-                />
-      
-
-
+                <input name="reference" className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Ref" required />
                 <label className='flex flex-col' htmlFor='marca'>
                     Marca
-
                     <select
                         name="brand"
                         className='bg-gray-200 border-gray-600 p-2 rounded lg m-2'
                         type="text"
-                        required
-                        defaultValue={0}
-                        value={brand}
-                        onChange={(e)=>{
-                            setBrand(e.target.value);
-                        }}
-                       
-
-                    >
+                        required>
                         <option disabled value={0}>
                             Seleccione una opción
                         </option>
@@ -491,18 +310,8 @@ const FormularioCreacionZapatillas = ({ setMostrarTabla, listaZapatillas, setZap
                     </select>
                 </label>
                 Edición
-                <input className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="number" min={1960} max={2021} placeholder="Año" required
-                value={edition}
-                onChange={(e)=>{
-                    setEdition(e.target.value);}}
-                     />
-                <button
-                    type="button"
-                    className="col-span-2 text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 "
-                    onClick={()=>{
-                        enviarAlBackend();
-                    }}              
-                >
+                <input name="edition" className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="number" min={1960} max={2021} placeholder="Año" required />
+                <button type="submit" className="col-span-2 text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ">
                     Guardar Zapatillas
                 </button>
             </form>

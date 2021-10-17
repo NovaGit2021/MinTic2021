@@ -1,4 +1,4 @@
-import axios from 'axios';
+/*import axios from 'axios';
 
 export const obtenerZapatillas = async (successCallback, errorCallback) => {
   const options = { method: 'GET', url: 'http://localhost:5000/zapatillas/' };
@@ -8,7 +8,7 @@ export const obtenerZapatillas = async (successCallback, errorCallback) => {
 export const crearZapatilla = async (data, successCallback, errorCallback) => {
   const options = {
     method: 'POST',
-    url: 'http://localhost:5000/zapatillas/',
+    url: 'http://localhost:5000/zapatillas/nuevo',
     headers: { 'Content-Type': 'application/json' },
     data,
   };
@@ -18,7 +18,7 @@ export const crearZapatilla = async (data, successCallback, errorCallback) => {
 export const actualizarZapatillas = async (data, successCallback, errorCallback) => {
   const options = {
     method: 'PATCH',
-    url: `http://localhost:5000/zapatillas/`,
+    url: `http://localhost:5000/zapatillas/editar`,
     headers: { 'Content-Type': 'application/json' },
     data,
   };
@@ -28,7 +28,7 @@ export const actualizarZapatillas = async (data, successCallback, errorCallback)
 export const eliminarZapatillas = async (successCallback, errorCallback) => {
   const options = {
     method: 'DELETE',
-    url: `http://localhost:5000/zapatillas/`,
+    url: `http://localhost:5000/zapatillas/eliminar`,
     headers: { 'Content-Type': 'application/json' },
   };
   await axios.request(options).then(successCallback).catch(errorCallback);

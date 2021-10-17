@@ -39,7 +39,7 @@ const RegistroDeVentas = () =>{
 
     useEffect(()=>{
         if (mostrarTabla){
-            setTextoBoton("Reguistrar Nueva Venta")
+            setTextoBoton("Registrar Nueva Venta")
         } else {
             setTextoBoton ("Listado de Ventas")
         }
