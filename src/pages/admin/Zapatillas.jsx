@@ -265,7 +265,7 @@ const FormularioCreacionZapatillas = ({ setMostrarTabla, listaZapatillas, setZap
         const options = {
             method: 'POST',
             url: 'http://localhost:5000/zapatillas/nuevo/',
-            headers: { 'Content-Type': 'aplication/json' },
+            headers: { 'Content-Type': 'application/json' },
             data: { 
                 reference: nuevasZapatillas.reference, 
                 brand: nuevasZapatillas.brand, 
