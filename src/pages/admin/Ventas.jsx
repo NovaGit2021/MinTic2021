@@ -105,7 +105,7 @@ const FormularioRegistroDeVentas = () => {
         <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Nombre del Comprador"/>
         <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="ID de las zapatillas"/>
         <input className="bg-gray-50 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Precio"/>
-        <button type= "button" className= "col-span-2 m-4 bg-blue-500 p-2 hover:bg-blue-700 text-white m-16 p-2 rounded-full ttransition duration-200 ease-in-out bg-blue-400 hover:bg-blue-500 transform hover:-translate-y-1 hover:scale-110 ">Guardar Venta</button>
+        <button type= "button" className= "col-span-2 m-4 bg-blue-500 p-2 hover:bg-blue-700 text-white rounded-full ttransition duration-200 ease-in-ou transform hover:-translate-y-1 hover:scale-110 ">Guardar Venta</button>
         </form>
             
         </div>

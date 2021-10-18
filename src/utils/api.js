@@ -51,4 +51,4 @@ export const RegistroDeVentas = async (data, successCallback, errorCallback) => 
     data,
   };
   await axios.request(options).then(successCallback).catch(errorCallback);
-};
+};*/
