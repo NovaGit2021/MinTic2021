@@ -14,12 +14,12 @@
 .tabla td, .tabla th{
     padding: 4px;
     margin: 4px;
-    border: 1px solid rgb(30, 133, 230);
+    border: 1px solid rgb(86, 105, 95);
 }
-
+/*Color encabezado de tabla*/
 .tabla th{
     color: #fff;
-    background-color: rgb(87, 162, 233);
+    background-color: rgba(6, 139, 46, 0.925);
     padding-top: 10px;
     padding-bottom: 10px;
     text-align: left;
@@ -29,10 +29,13 @@
     background-color: rgb(230, 230, 230);
 }
 
+
+
 .tabla tr:hover{
-    background-color: rgb(125, 190, 250);
+    background-color: rgba(18, 155, 64, 0.589);
     cursor: pointer;
 }
+
 
 /*m-10 flex justify-center text-blue-400 font-extrabold*/
 

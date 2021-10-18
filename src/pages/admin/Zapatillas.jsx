@@ -33,13 +33,13 @@ const Zapatillas = () => {
         }
     }, [ejecutarConsulta])
 
-    // cierre obtener lista de vehículos del supuesto backend
+    
     useEffect(() => {
         if (mostrarTabla) {
             setEjecutarConsulta(true)
         }
     }, [mostrarTabla]);
-    //aquí termina como en verdad se obtienen del verdadero backend
+    
     useEffect(() => {
         if (mostrarTabla) {
             setTextoBoton("Crear nuevas Zapatillas")
@@ -132,7 +132,6 @@ const TablaZapatillas = ({ listaZapatillas, setEjecutarConsulta }) => {
 const FilaZapatilla = ({ zapatilla, setEjecutarConsulta }) => {
     const [edit, setEdit] = useState(false);
     const [infoNuevasZapatillas, setInfoNuevasZapatillas] = useState({
-        _id: zapatilla._id,
         reference: zapatilla.reference,
         brand: zapatilla.brand,
         edition: zapatilla.edition,
@@ -290,7 +289,7 @@ const FormularioCreacionZapatillas = ({ setMostrarTabla, listaZapatillas, setZap
         <div className="flex flex-col items-center justify-center">
             <h2 className="text-2xl font-extrabold text-gray-800">Crear nueva zapatilla</h2>
             <form ref={form} onSubmit={submitForm} className='flex flex-col'>
-                Rerefencia
+                Refencia
                 <input name="reference" className="bg-gray-200 border-gray-600 p-2 rounded lg m-2" type="text" placeholder="Ref" required />
                 <label className='flex flex-col' htmlFor='marca'>
                     Marca
