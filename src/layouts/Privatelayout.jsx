@@ -1,10 +1,13 @@
 import React from 'react'
+import PrivateRoute from '../components/PrivateRoute';
 import Sidebar from '../components/Sidebar';
 import SidebarResponsive from '../components/SidebarResponsive.jsx';
 
-const privatelayout = ({children}) => {
+
+const Privatelayout = ({children}) => {
     return (
-        <div className="flex w-screen h-screen">
+        <PrivateRoute>
+    <div className="flex w-screen h-screen">
             <div className="flex flex-col md:flex-row flex-nowrap h-full w-full">
                 <Sidebar />
                 <SidebarResponsive />
@@ -12,8 +15,9 @@ const privatelayout = ({children}) => {
                     {children}
                 </main>
             </div>
-        </div>       
+        </div>
+        </PrivateRoute>       
     );
 } 
 
-export default privatelayout
+export default Privatelayout
