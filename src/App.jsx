@@ -1,4 +1,5 @@
 
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './styles/styles.css';
 import Authlayout from './layouts/Authlayout';
@@ -12,10 +13,16 @@ import Zapatillas from './pages/admin/Zapatillas';
 import Perfil from './pages/admin/Perfil';
 import Ventas from './pages/admin/Ventas';
 import Usuarios from './pages/admin/Usuarios';
+import { Auth0Provider } from '@auth0/auth0-react';
 
 
 function App() {
   return (
+  <Auth0Provider
+  domain="dev-34tpn-g9.us.auth0.com"
+  clientId="GZcGDT45h4m1vKY1PRTDTjtzCQtZe7fb"
+  redirectUri={window.location.origin}>
+    <div className='App'>
     <Router>
       <Switch>
         <Route path={['/admin', '/admin/zapatillas', '/admin/Perfil', '/admin/Ventas', '/admin/Usuarios']}>
@@ -61,11 +68,12 @@ function App() {
           </Publiclayout>
         </Route >
       </Switch>
-    </Router > 
+    </Router >
+    </div>
+  </Auth0Provider> 
   );
-};
+}
 
-      
-        
+
 
 export default App;
