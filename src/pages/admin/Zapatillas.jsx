@@ -145,7 +145,7 @@ const FilaZapatilla = ({ zapatilla, setEjecutarConsulta }) => {
             method: 'PATCH',
             url: 'http://localhost:5000/zapatillas/editar/',
             headers: { 'Content-Type': 'application/json' },
-            data: { ...infoNuevasZapatillas, id: zapatilla._id },
+            data: { ...infoNuevasZapatillas, id: zapatilla._id},
         };
 
         await axios

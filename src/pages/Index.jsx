@@ -19,7 +19,7 @@ const Index = () => {
         <section className="contenedor sobre-nosotros">
             <h2 className="m-10 flex justify-center text-blue-400 font-extrabold">Nuestro producto</h2>
             <div className="flex  justify-center">
-                <img src={nova} alt="" class="imagen-about-us" />
+                <img src={nova} alt="" className="imagen-about-us" />
                 <div className="contenido-textos">
                     <h3><span>1</span>Los mejores productos</h3>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum, placeat? Nulla laboriosam quam, animi maxime quasi praesentium delectus tenetur doloremque voluptates obcaecati omnis itaque soluta recusandae ducimus ut voluptas dolorum.</p>

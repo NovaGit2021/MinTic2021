@@ -11,7 +11,7 @@ const Navbar = () => {
                 <li className='h-4 my-3 text-white font-extrabold '>ShoeStore.novaGit</li>
                 
                 <button onClick={() => loginWithRedirect({ returnTo: 'http://localhost:3000/admin' })}
-                className= "bg-blue-300 hover:bg-blue-500 p-2 text-white rounded-lg shadow-md ttransition rounded duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110 ">
+                className= "bg-blue-300 hover:bg-blue-500 p-2 text-white rounded-lg shadow-md ttransition duration-200 ease-in-out transform hover:-translate-y-1 hover:scale-110 ">
                 Iniciar Sesión
                 </button>
 

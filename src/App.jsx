@@ -21,7 +21,8 @@ function App() {
   <Auth0Provider
   domain="dev-34tpn-g9.us.auth0.com"
   clientId="GZcGDT45h4m1vKY1PRTDTjtzCQtZe7fb"
-  redirectUri={window.location.origin}>
+  redirectUri="http://localhost:3000/admin"
+  audience="api-autenticacion-zapatillas">
     <div className='App'>
     <Router>
       <Switch>
